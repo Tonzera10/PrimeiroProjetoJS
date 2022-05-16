@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Projeto de Introdução a Programação</title>
+
+	<script>
+
+		let contadorCadastro = 0;
+		let nomes = [];
+		let telefones = [];
+		let datas = [];
+		let notas = [];
+		
+		function mostrarCadastro(indice) {
+			
+			let resultado = (notas[indice] >= 7)? "APROVADO": "REPROVADO";
+
+			document.getElementById("idCadastro").innerHTML = " Nome: " + nomes[indice] + "<br><br> Telefone: " + telefones[indice] + "<br><br> Data: " + datas[indice] + "<br><br> Nota: " + notas[indice] + "<br><br> Situação: " + resultado;
+		}
+		
+		function cadastro() {
+			nome = document.getElementById('nome').value;
+			telefone = document.getElementById('telefone').value;
+			data = document.getElementById('data').value;
+			nota = document.getElementById('nota').value;
+
+			nomes[contadorCadastro] = nome;
+			telefones[contadorCadastro] = telefone;
+			datas[contadorCadastro] = data;
+			notas[contadorCadastro] = nota;
+		
+			document.getElementById("alunos").innerHTML += "<p onclick='mostrarCadastro(" + contadorCadastro + ")'>" + nome + "</p>";
+
+			contadorCadastro++;
+			
+			if(nome == "") {
+				alert("ERRO")
+			} else {
+				alert("Cadastro Efetuado com Sucesso");
+			}
+		}
+
+	</script>
+  </head>
+  <body>
+	<div style="width: 50%; float: left;">
+		
+
+		<p>Nome do(a) Aluno(a):<input id="nome" type="text" name="nome" required></p>
+		<p>Telefone:<input id="telefone" type="tel" name="telefone" required></p>
+		<p>Data de Nascimento:<input id="data" type="date" name="data"></p>
+		<p>Nota Final do Curso:<input id="nota" type="text" name="nota" required></p>
+		<p id="resultado"></p>
+		<p><button onclick="cadastro()">Cadastrar Aluno</button></p>
+
+		
+	
+	<p><b>Alunos:</b></p>
+	<p id="alunos"></p>
+
+	</div>
+
+	<div style="width:50%; float: right;">
+		<p>Cadastro:</p>
+		<p id="idCadastro"></p>
+
+	</div>
+
+
+  </body>
+</html>
